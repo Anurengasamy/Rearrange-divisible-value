@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+void moveDivisibleBy10ToLeft(int arr[], int n) {
+    int left = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] % 10 == 0) {
+            if (i != left) {
+                int temp = arr[i];
+                arr[i] = arr[left];
+                arr[left] = temp;
+            }
+            left++;
+        }
+    }
+}
+
+int main() {
+    int input[] = {10, 5, 20, 25, 30, 15};
+    int size = sizeof(input) / sizeof(input[0]);
+
+    printf("Original array: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", input[i]);
+    }
+    printf("\n");
+
+    moveDivisibleBy10ToLeft(input, size);
+
+    printf("Modified array: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", input[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
